@@ -36,6 +36,14 @@ Explore the full case study and all answered questions on Notion:
 ## 2. View the stakeholders report for data driven decision making here
 [View the Word Document on OneDrive](https://1drv.ms/w/c/cf5270b7324c0d6a/EZlI5Gx_pztPp2mls4nm8eUBvIaLVS7DA3g2LDNivEoC5w?e=HjecPk)
 
+## 3. Kaggle Raw Dataset used the project.
+Here is the datasets from kaggle I have used for this case study as directed by coursera.
+Below is the link to access the dataset.
+Fitbit dataset: https://www.kaggle.com/datasets/arashnic/fitbit
+
+You can access the cleaned dataset used for analysis and the stakeholders report in the dataset folder in this repository.
+
+
 
 
 
