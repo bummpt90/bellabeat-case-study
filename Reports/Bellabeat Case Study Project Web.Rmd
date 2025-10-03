@@ -1,0 +1,148 @@
+---
+title: 'Unlocking Wellness: Behavioural Insights from Leaf Users to Drive Bellabeat’s
+  Growth'
+author: "Mr Matthew Beeun"
+date: '`r Sys.Date()`'
+output:html_document
+toc: true
+toc_depth: 2
+theme: united
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(readxl)
+```
+
+
+# Executive Summary
+
+Bellabeat seeks to deepen its understanding of user behavior through smart device data. This report analyzes Fitbit usage patterns to uncover insights that inform marketing strategy for the Leaf tracker. Key findings reveal moderate daily activity, high sedentary behavior, and varied sleep efficiency among users.
+
+## **Top 3 Recommendations:**
+1. Segment users by movement and sleep patterns for tailored messaging.
+2. Promote sleep tracking and manual logging features to boost engagement.
+3. Re-engage sedentary users with nudges and mindfulness content.
+
+# **Introduction**
+Bellabeat’s mission is to empower women through smart wellness technology. To support this, the executive team tasked the analytics division with analyzing smart device usage data to uncover behavioral patterns and generate actionable recommendations for the Leaf product.
+
+# **Project Overview**
+
+- **Objective:** Understand how users engage with Leaf and identify trends in   activity, sleep, and energy expenditure.
+- **Stakeholders:** Bellabeat executive team, marketing division, product       development.
+- **Data Source:** Fitbit dataset from Kaggle, covering 33 users across 18 CSV   files.
+- **Tools Used:** SQL Server Management Studio (SSMS), Tableau, R Markdown.
+
+
+# **Data and Analysis**
+
+## **Data Preparation**
+
+```{r}
+bellabeat.leaf_user_summary <- read_excel("C:\\Users\\Mr Matthew\\Desktop\\Data\\Google Data Analytics\\Capstone Project\\bellabeat.leaf_user_summary.xlsx")
+glimpse(bellabeat.leaf_user_summary)
+```
+
+- Cleaned and validated all tables
+- Merged into bellabeat.leaf_user_summary using Id + ActivityDate
+- Created derived metrics: CaloriesPerStep, SedentaryRatio, ActivityFlag
+
+# Key Insights
+
+## Activity
+```{r}
+ggplot(bellabeat.leaf_user_summary, aes(x = TotalSteps)) +
+  geom_histogram(binwidth = 1000, fill = "steelblue", color = "white") +
+  labs(title = "Daily Step Distribution", x = "Total Steps (bin)", y = "Count of Total Steps")
+
+```
+
+- Most users average 6K - 11K steps daily.
+- Sedentary time dominates across users.
+- High step count doesn't always mean high calorie burn.
+
+## Sleep
+```{r}
+ggplot(bellabeat.leaf_user_summary, aes(x = Id, y = TotalMinutesAsleep)) +
+  geom_line(color = "purple") +
+  labs(title = "Total Minutes Asleep by User", x = "User ID", y = "Minutes Asleep")
+
+## Sleep vs Activity (Line Chart)
+ggplot(data = bellabeat.leaf_user_summary, aes(x = Id)) +
+  geom_line(aes(y = TotalMinutesAsleep), color = "purple") +
+  geom_line(aes(y = TotalSteps), color = "orange") +
+  labs(title = "Leaf User Wellness: Sleep and Activity Correlation")
+
+
+```
+
+- Sleep duration varies widely.
+- Sleep efficiency reveals restlessness in some users.
+- Active users tend to sleep more consistently.
+
+## Intensity and Calories
+```{r}
+ggplot(bellabeat.leaf_user_summary, aes(x = TotalSteps, y = DailyCalories)) +
+  geom_point(color = "darkgreen", alpha = 0.6) +
+  labs(title = "Calories Burned vs Total Steps", x = "Total Steps", y = "Daily Calories")
+```
+
+- Some users burn calories with minimal steps - suggesting non-step activities   or stress.
+- Higher intensity correlates with higher calorie burn.
+
+
+## Body Metrics
+```{r}
+ggplot(bellabeat.leaf_user_summary, aes(x = factor(BMI))) +
+  geom_bar(fill = "steelblue") +
+  labs(title = "BMI Frequency", x = "BMI", y = "Count")
+```
+
+- BMI distribution is narrow, suggesting a relatively homogeneous user base.
+- Manual weight logging is low - opportunity for engagement.
+- This suggests that users are either not logging their weight consistently or   the app/device isn’t capturing it effectively.
+
+# Recommendations
+
+1. **Segment Users by Behaviour**
+  - High-activity, high-sleep
+  - Sedentary but calorie-burning
+  - Low-engagement users
+
+2. **Promote Sleep Tracking Features**
+  - Target users with poor sleep efficiency.
+  - Highlight benefits of consistent sleep patterns.
+
+3. **Re-engage Sedentary Users**
+  - Use nudges and mindfulness prompts.
+  - Encourage light activity throughout the day.
+
+4. **Highlight Manual Logging Benefits**
+  - Educate users on tracking weight and sleep manually.
+  - Incentivize consistent logging behaviour.
+  - Simplify the weight entry process in the app.
+  - Consider integrating smart scales or predictive modeling to estimate BMI. 
+  - Flag BMI as a priority metric for future product iterations.
+
+  
+5. **Refine Activity Flag Logic**
+  - Use intensity and calorie burn to better classify user engagement.
+  
+  
+# Actionable Steps
+  - Deploy Interactive Dashboards.
+  Use Tableau or R Markdown to monitor user segments and behavioural trends in   real time.
+  - Launch Targeted Campaigns.
+  Tailor messaging based on user behaviour clusters (e.g., sleep-focused,       movement-focused).
+  - Integrate Predictive Modelling.
+  Forecast churn risk and engagement likelihood using behavioural metrics.
+  - Enhance App Features.
+  Add personalized wellness prompts based on intensity and sleep efficiency.
+  
+# Track KPIs Over Time
+  Monitor changes in steps, calories and sleep post-campaign to measure         impact.
