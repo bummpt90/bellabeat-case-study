@@ -24,5 +24,18 @@ Bellabeat wants to understand how users engage with their wellness Leaf tracker 
 - Manual logging is low—opportunity for engagement
 - Segmentation can drive personalized marketing
 
-## Repository Structure
+## Links
+
+## 1. ## 🔍 Project Breakdown
+
+Explore the full case study and all answered questions on Notion:
+
+👉 [Google Capstone Project – A Case Study](https://www.notion.so/Google-Capstone-Project-A-Case-Study-24dd5a123d5d80c38ca4f76f8bbc2ce6)
+
+
+## 2. View the stakeholders report for data driven decision making here
+[View the Word Document on OneDrive](https://1drv.ms/w/c/cf5270b7324c0d6a/EZlI5Gx_pztPp2mls4nm8eUBvIaLVS7DA3g2LDNivEoC5w?e=HjecPk)
+
+
+
 
