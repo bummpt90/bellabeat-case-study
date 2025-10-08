@@ -43,6 +43,8 @@ Fitbit dataset: https://www.kaggle.com/datasets/arashnic/fitbit
 
 You can access the cleaned dataset used for analysis and the stakeholders report in the dataset folder in this repository.
 
+This Capstone Project can also be accessed through my blog link below:
+Matthew Beeun: (https://bummpt90.blogspot.com/)
 
 
 
